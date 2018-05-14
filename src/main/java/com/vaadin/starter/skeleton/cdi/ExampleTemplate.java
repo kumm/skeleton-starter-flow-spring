@@ -1,22 +1,17 @@
-package com.vaadin.starter.skeleton.spring;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
+package com.vaadin.starter.skeleton.cdi;
 
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
-import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.templatemodel.TemplateModel;
+
+import javax.inject.Inject;
 
 /**
  * Simple template example.
  */
 @Tag("example-template")
 @HtmlImport("src/example-template.html")
-@SpringComponent
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ExampleTemplate extends PolymerTemplate<ExampleTemplate.ExampleModel> {
 
     /**
@@ -27,7 +22,8 @@ public class ExampleTemplate extends PolymerTemplate<ExampleTemplate.ExampleMode
         void setValue(String name);
     }
 
-    public ExampleTemplate(@Autowired MessageBean bean) {
+    @Inject
+    public ExampleTemplate(MessageBean bean) {
         // Set the initial value to the "value" property.
         getModel().setValue(bean.getMessage());
     }

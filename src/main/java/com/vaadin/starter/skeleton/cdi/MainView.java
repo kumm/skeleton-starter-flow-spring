@@ -1,11 +1,11 @@
-package com.vaadin.starter.skeleton.spring;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package com.vaadin.starter.skeleton.cdi;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+
+import javax.inject.Inject;
 
 /**
  * The main view contains a simple label element and a template element.
@@ -14,7 +14,8 @@ import com.vaadin.flow.router.Route;
 @Route("")
 public class MainView extends VerticalLayout {
 
-    public MainView(@Autowired ExampleTemplate template) {
+    @Inject
+    public MainView(ExampleTemplate template) {
         // This is just a simple label created via Elements API
         Button button = new Button("Click me",
                 event -> template.setValue("Clicked!"));
