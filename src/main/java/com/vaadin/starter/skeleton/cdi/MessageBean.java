@@ -1,6 +1,6 @@
 package com.vaadin.starter.skeleton.cdi;
 
-import com.wcs.vaadin.flow.cdi.NormalUIScoped;
+import com.vaadin.cdi.annotation.NormalUIScoped;
 
 /**
  * Data provider bean.
